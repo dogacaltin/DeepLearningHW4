@@ -1,0 +1,55 @@
+Device: cpu 
+
+AAPL: 1507 trading days
+MSFT: 1507 trading days
+GOOGL: 1507 trading days
+
+Train 3384 | Val 246 | Test 675
+Buy ratio (threshold=0.1) -> Train 0.033 | Val 0.028 | Test 0.046
+
+pos_weight: 28.95
+
+=== BiLSTM ===
+[BiLSTM] Epoch   5 | Train 1.241884 | Val 1.347420
+[BiLSTM] Epoch  10 | Train 1.222212 | Val 1.363230
+[BiLSTM] Epoch  15 | Train 1.229049 | Val 1.406193
+[BiLSTM] Epoch  20 | Train 1.216634 | Val 1.394835
+[BiLSTM] Epoch  25 | Train 1.206267 | Val 1.611358
+[BiLSTM] Epoch  30 | Train 1.200106 | Val 1.317147
+
+[BiLSTM] Chosen threshold (val F1=0.077): 0.30 | Test AUC: 0.646
+Test buy ratio: 0.046 | predicted: 0.733
+              precision    recall  f1-score   support
+
+        Pass     0.9611    0.2686    0.4199       644
+         Buy     0.0485    0.7742    0.0913        31
+
+    accuracy                         0.2919       675
+   macro avg     0.5048    0.5214    0.2556       675
+weighted avg     0.9192    0.2919    0.4048       675
+
+Confusion matrix:
+ [[173 471]
+ [  7  24]]
+=== BiGRU ===
+[BiGRU] Epoch   5 | Train 1.224183 | Val 1.477157
+[BiGRU] Epoch  10 | Train 1.222320 | Val 1.439503
+[BiGRU] Epoch  15 | Train 1.219712 | Val 1.416398
+[BiGRU] Epoch  20 | Train 1.215647 | Val 1.640915
+[BiGRU] Epoch  25 | Train 1.221999 | Val 1.455639
+[BiGRU] Epoch  30 | Train 1.161285 | Val 1.734891
+
+[BiGRU] Chosen threshold (val F1=0.086): 0.30 | Test AUC: 0.631
+Test buy ratio: 0.046 | predicted: 0.397
+              precision    recall  f1-score   support
+
+        Pass     0.9705    0.6134    0.7517       644
+         Buy     0.0709    0.6129    0.1271        31
+
+    accuracy                         0.6133       675
+   macro avg     0.5207    0.6131    0.4394       675
+weighted avg     0.9292    0.6133    0.7230       675
+
+Confusion matrix:
+ [[395 249]
+ [ 12  19]]
